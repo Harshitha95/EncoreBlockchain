@@ -1,0 +1,170 @@
+<html>
+<head>  
+<style>
+body {background-color: white;}
+h1 { text-align: center  }
+.nav {
+    
+    list-style-type: none;
+    height:75px;
+    width: 100%;   
+    margin-top: 50px;
+    margin-left: 100px;
+}
+.nav1 {
+    
+    list-style-type: none;
+    height:auto;
+    width: 84%;
+    text-indent: 10px;
+    background-color: #aaeeaa;
+    margin-top: -16px;
+    margin-left: 100px;
+}
+</style>
+</style>
+<script
+src="https://code.jquery.com/jquery-3.3.1.js"
+integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60="
+crossorigin="anonymous"></script>
+<script>
+  function addPPR() {
+    let pprId= $("#pprId").val();
+  let programId= $("#programId").val();
+  let businessId= $("#businessId").val();
+  let relationship= $("#relationship").val();
+  let programBusinessLimit= $("#programBusinessLimit").val();
+  let programBusinessROI= $("#programBusinessROI").val();
+  let programBusinessDiscountPeriod= $("#programBusinessDiscountPeriod").val();
+  let programBusinessDiscountPercentage= $("#programBusinessDiscountPercentage").val();
+  let staleDays= $("#staleDays").val();
+  
+  let repaymentAccNo= $("#repaymentAccNo").val();
+
+
+  let options = {};
+ options.chaincodeId="pprcc";
+ options.methodToBeCalled="createPPR";
+//form array of named inputs 
+var arguments={};
+arguments.arg1=pprId;
+arguments.arg2=programId;
+arguments.arg3=businessId;
+arguments.arg4=relationship;
+arguments.arg5=programBusinessLimit;
+arguments.arg6=programBusinessROI;
+arguments.arg7=programBusinessDiscountPeriod;
+arguments.arg8=programBusinessDiscountPercentage;
+arguments.arg9=staleDays;
+arguments.arg10=repaymentAccNo;
+options.dataArguments=arguments;
+ 
+$.ajax({ 
+   //url: "http://35.237.167.245:3000/invoke?arguments=['bankcc', 'writeBankInfo', "+bankId+", "+bankName+", "+bankBranch+", "+bankCode+", "+bWB+", '1000', '1000', '1000', '1000']", 
+   //url: "http://localhost:3000/invoke?arguments=['bankcc', 'writeBankInfo', "+bankId+", "+bankName+", "+bankBranch+", "+bankCode+", "+bWB+", '1000', '1000', '1000', '1000']", 
+   // url: "http://localhost:3000/invoke?arguments=%5B%22bankcc%22,%22writeBankInfo%22,%22+bankId+%22,%22+bankName+%22,%22+bankBranch+%22,%22+bankCode+%22,%22+bWB+%22,%221000%22,%221000%22,%221000%22,%221000%22%5D",
+   //url: "http://localhost:3000/invoke?arguments=%5B%22bankcc%22,%22writeBankInfo%22,%2252012%22,%225214%22,%22Chennai%22,%220052%22,%2250000%22,%221000%22,%221000%22,%221000%22,%221000%22%5D",
+   url: "http://localhost:3000/postSender",
+   datatype: "JSON", 
+   data: options,
+   type: "Post", 
+   success: function (data) { 
+              //debugger;                           
+              console.log("data "+data );
+              //console.log("data.length "+data.length )
+              console.log("data.length "+ data.length);
+              let len=data.length;
+              $("#messages").text(data);
+                } 
+              }); 
+          }
+  </script>
+</head>
+<body>
+  <div >
+    <img src="/Images/headleft.png">
+    <div class="top-right" style="float: right; margin-top: -117px;margin-right: 45px;overflow: hidden">
+      <ol style="overflow: hidden"><li style="padding: 10px"><img style="position: absolute;width:134px" onclick="addBankParticipant()"src="/Images/BAdd.png"/></li>
+        <li style="padding: 10px"><img style="position: absolute;width:134px;margin-top: -4px" src="/Images/bankConfig.png"/></li>
+          <li style="padding: 10px"><img style="position: absolute;width:134px;margin-top: -9px"onclick="bankWalletsPage()" src="/Images/bankWallet.png"/></li></ol></div>
+  </div>
+  <div></div>
+  <div class="nav">
+    <img src="/Images/addparticipanthead.png">
+    <div class="top-right" style="float: right; margin-top: 117px;margin-right: 45px;overflow: hidden">
+     <li style="padding: 10px"><img style="position: absolute;width:134px;margin-top: -128px;margin-left: -260px" onclick="mainPage()" src="/Images/back.png"/></li></div>
+     
+    </div>
+    <div class="nav1" id="text">
+    </br>
+    <div class="row">
+        <div class="col-md-4">PPR ID</div><div class="col-md-8"><input type="text" id="pprId"></div>
+    </div>
+    <div class="row">
+        <div class="col-md-4">Program ID</div><div class="col-md-8"><input type="text" id="programId"></div>
+    </div>
+           <div class="row">
+        <div class="col-md-4">Business ID</div><div class="col-md-8"><input type="text" id="businessId"></div>
+    </div>
+    </br>
+        <div class="row">
+        <div class="col-md-4">Relationship </div><div class="col-md-8"><input type="text" id="relationship"></div>
+    </div>
+    </br>
+        <div class="row">
+        <div class="col-md-4">Program Business Limit</div><div class="col-md-8"><input type="text" id="programBusinessLimit"></div>
+    </div>
+    </br>
+        <div class="row">
+        <div class="col-md-4">Program Business ROI</div><div class="col-md-8"><input type="text" id="programBusinessROI"></div>
+    </div>
+    </br>
+        <div class="row">
+        <div class="col-md-4">Program Business Discount Period</div><div class="col-md-8"><input type="text" id="programBusinessDiscountPeriod"></div>
+    </div>  
+    </br>  
+        <div class="row">
+        <div class="col-md-4">Program Business DiscountPercentage</div><div class="col-md-8"><input type="text" id="programBusinessDiscountPercentage"></div>
+    </div>
+    </br>
+    <div class="row">
+        <div class="col-md-4">Stale Days</div><div class="col-md-8"><input type="text" id="staleDays"></div>
+    </div>
+     </br>
+       
+    <div class="row">
+        <div class="col-md-4">Repayment Account No</div><div class="col-md-8"><input type="text" id="repaymentAccNo"></div>
+    </div>
+      </br>
+      <div class="center" style="margin-left: 330px" > 
+         <img src="/Images/Cancel.png" onclick="cancel()" >
+         <img src="/Images/Submit.png" onclick="addPPR()" >
+         <div id="messages"></div>
+     </div>        
+   </div>
+</body>
+</html>
+
+<!--<div>
+
+<h1>Add Program Participant Rules</h1>
+    <table width=75% id="bussiness">
+		
+		<tr><td>Program ID</td><td><input type="text" id="programId"></td></tr>
+        <tr><td>Business ID</td><td><input type="text" id="businessId"></td></tr>
+		<tr><td>Relationship</td><td><input type="text" id="relationship"></td></tr>
+        <tr><td>Program Business Limit</td><td><input type="text" id="programBusinessLimit"></td></tr>
+         <tr><td>Program Business ROI</td><td><input type="text" id="programBusinessROI"></td></tr>
+		<tr><td>Program Business Discount Period</td><td><input type="text" id="programBusinessDiscountPeriod"></td></tr>
+		<tr><td>Program Business DiscountPercentage</td><td><input type="text" id="programBusinessDiscountPercentage"></td></tr>
+		<tr><td>Stale Days</td><td><input type="text" id="staleDays"></td></tr>
+		<tr><td>Repayment AccNo</td><td><input type="text" id="repaymentAccNo"></td></tr>
+    </table>
+</div>
+<div>
+    <button class-"wide" onclick="cancelBusiness()"  id="cancel"> Cancel </button> 
+    <button class-"wide" onclick="addPPR()"  id="submit"> Submit </button>
+    <button class-"wide" onclick="mainPage()"  id="back"> Back </button>
+<div id="messages"></div> 
+</div>-->
+

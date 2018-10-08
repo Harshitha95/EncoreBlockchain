@@ -1,0 +1,136 @@
+<html>
+<head><title>Themechain</title>
+<style>
+table {
+    font-family: arial, sans-serif;
+    border-collapse: collapse;
+    width: 30%;
+}
+
+td, th {
+    border: 2px solid #dddddd;
+    text-align: left;
+    padding: 8px;
+}
+
+tr:nth-child(even) {
+    background-color: #dddddd;
+}
+body {
+	background-color: #A0F8D9;
+}
+
+h1 { text-align: center  }
+
+.carousel-inner img {
+      width: 100%;
+      height: 100%;
+  }
+  .accordion {
+    background-color: #F7E3AF;
+    color: #444;
+    cursor: pointer;
+    padding: 18px;
+    width: 50%;
+    border: none;
+    text-align: center;
+    outline: none;
+    font-size: 15px;
+    transition: 0.4s;
+}
+
+.active, .accordion:hover {
+    background-color: #c79286; 
+}
+
+.panel {
+    padding: 0 18px;
+    display: none;
+    background-color: #D8D2D0;
+    overflow: hidden;
+}
+</style>
+<script src=./js/tc-admin.js></script>
+<script src = ./js/jquery-3.1.0.js> </script>
+<script src = ./js/jquery-3.1.0.min.js> </script>
+<script src = ./js/watson-speech.js> </script>
+<script type = "text/javascript" src = "./js/bootstrap.js"> </script>
+<meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+
+  </head>
+<body >
+	<div class="container" id="body">
+<h1 class="text-primary">ThemeChain SCF</h1>
+
+<button class="accordion" class="text-primary">Add</button>
+<div class="panel">
+	<button onclick="addBusinessParticipant()" class="text-primary">Add Business Participant</button>
+	<button onclick="addBankParticipant()">Add Bank Participant</button>
+	</br>
+	<button onclick="addProgramAsset()" >Add Program</button>
+	<button onclick="addPPRPage()" >Add PPR</button>
+	<button onclick="addInstrumentPage()">Add Instrument</button>
+</div>
+<button class="accordion">Loan</button>
+<div class="panel">
+	<button onclick="loanSanctionPage()">Loan Sanction</button>
+	<button onclick="disbursedPage()">Loan Disbursed</button>
+</div>
+<button class="accordion">Charges</button>
+<div class="panel">
+	<button onclick="charges()">Charges</button>
+	<button onclick="penalChargesPage()">Penal Charges</button>
+	<button onclick="accrualChaincode()">Accrual Chaincode</button>
+	<button onclick="interestAccChargesPage()">Interest Accrued Charges</button>
+</div>
+<button class="accordion">Repayment</button>
+<div class="panel">
+	<button onclick="repaymentPage()">Repayment</button>
+</div>
+<button class="accordion">Refund</button>
+<div class="panel">
+	<button onclick="marginRefundPage()">Margin Refund</button>
+	<button onclick="interestRefundPage()">Interest Refund</button>
+</div>
+<button class="accordion">Collection</button>
+<div class="panel">
+	<button onclick="interestInAdvColl()">Interest InAdvance Collection</button>
+	<button onclick="penalInterestCollectionPage()">Penal Interest Collectionn</button>
+</div>
+<button class="accordion">TDS</button>
+<div class="panel">
+	<button onclick="tdsPage()">TDS</button>
+</div>
+<button class="accordion">View Wallets</button>
+<div class="panel">
+	<button onclick="businessWalletsPage()">Business Wallets</button>
+	<button onclick="loanWalletsPage()">Loan Wallets</button>
+	<button onclick="bankWalletsPage()">Bank Wallets</button>
+</div>
+
+<script type="text/javascript">
+  	
+  	var acc = document.getElementsByClassName("accordion");
+		var i;
+
+		for (i = 0; i < acc.length; i++) {
+		    acc[i].addEventListener("click", function() {
+		        this.classList.toggle("active");
+		        var panel = this.nextElementSibling;
+		        if (panel.style.display === "block") {
+		            panel.style.display = "none";
+		        } else {
+		            panel.style.display = "block";
+		        }
+		    });
+		} 	
+
+  </script>
+</div>
+</body>
+</html>

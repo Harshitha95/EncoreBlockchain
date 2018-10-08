@@ -1,0 +1,34 @@
+
+<div><h2 id="title"></h2>
+    <h3 id='whyChange' onclick="displayAdminUpdate()" class="showfocus">Why All The Changes?</h3>
+    <div class="showfocus scrollingPaneLeft">
+        <h3 id="rm"></h3>
+        <table id="resourceManagement" width="98%"><tr><th id="rm_api"></th><th id="rm_param"></th></tr>
+          <tr><td onclick="listRegistry()" class="showfocus" id="rm_lr_api"></td><td><select id="registryName" width="25%"></td></tr>
+	  	  <tr><td onclick="addAsset()" class="showfocus">Add Asset</td><td>Asset Details</td></tr>
+          <tr><td onclick="listAssets()" class="showfocus" id="rm_la_api"></td><td id="rm_la_param"></td></tr>
+          <tr><td onclick="addMember1()" class="showfocus" id="rm_am_api"></td>
+			<td><select id="registryName1" width="25%">
+                <option id="cd_buyer">Buyer</option>
+                <option id="cd_seller">Seller</option>
+                <option id="cd_shipper">Shipper</option>
+                <option id="cd_provider">Provider</option>
+                <option id="cd_financeco">Finance</option>
+				<option id="cd_bank">Bank</option>
+                <option id="cd_business">Business</option>
+            </select></td></tr>
+			<tr><td onclick="addTransaction()" class="showfocus">Add Transaction</td><td>Transaction </td></tr>
+     		<tr><td onclick="viewTransaction()" class="showfocus">View Transaction</td><td>Transaction </td></tr>
+          <tr><td onclick="issueIdentity()" class="showfocus" id="rm_ii_api"></td><td><select id="registryName2" width="25%"></select></td></tr>
+          <tr><td onclick="checkCard()" class="showfocus" id="rm_cc_api"></td><td><select id="registryName3" width="25%"></select></td></tr>
+          <tr><td onclick="createCard()" class="showfocus" id="rm_cc2_api"></td><td><select id="registryName4" width="25%"></select></td></tr>
+          <tr><td onclick="removeMember()" class="showfocus" id="rm_rm_api"></td><td><select id="registryName5" width="25%"></td></tr>
+		  <tr><td onclick="sampleData()" class="showfocus">Create Account</td><td>Account Details</td></tr>
+         </table>
+       </div> </div>
+    <div class="scrollingPaneRight">
+      <div class="showfocus" id="admin-forms" ></div>
+      <div id="messages"></div> 
+    </div>
+ 
+  

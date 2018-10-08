@@ -1,0 +1,197 @@
+<html>
+<head>
+    <style>
+body {background-color: white;}
+h1 { text-align: center  }
+.nav {
+    
+    list-style-type: none;
+    height:75px;
+    width: 100%;
+   
+    margin-top: 50px;
+    margin-left: 100px;
+}
+.nav1 {
+    
+    list-style-type: none;
+    height:auto;
+    width: 84%;
+     text-indent: 10px;
+    background-color: #aaeeaa;
+    margin-top: -16px;
+    margin-left: 100;
+}
+</style>
+<script
+src="https://code.jquery.com/jquery-3.3.1.js"
+integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60="
+crossorigin="anonymous"></script>
+<script>
+  function addProgram() {
+  
+  let programId = $("#programId").val();
+  let programName = $("#programName").val();
+  let programAnchor = $("#programAnchor").val();
+  let programType = $("#programType").val();
+  let program_StartDate = $("#program_StartDate").val();
+  let program_EndDate = $("#program_EndDate").val();
+  let programLimit = $("#programLimit").val();
+  let programROI = $("#programROI").val();
+  let programExposure = $("#programExposure").val();
+  let discountPercentage = $("#discountPercentage").val();
+  let discountPeriod = $("#discountPeriod").val();
+  let sanctionAuthority = $("#sanctionAuthority").val();
+  let sanctionDate = $("#sanctionDate").val();
+  let repaymentAccountNo = $("#repaymentAccountNo").val();
+
+  let options = {};
+ options.chaincodeId="programcc";
+ options.methodToBeCalled="writeProgram";
+
+    var arguments={};
+    arguments.arg1=programId;
+    arguments.arg2=programName;
+    arguments.arg3=programAnchor;
+    arguments.arg4=programType;
+   // arguments.arg5=program_StartDate;
+    arguments.arg5=program_EndDate;
+    arguments.arg6=programLimit;
+    arguments.arg7=programROI;
+    arguments.arg8=programExposure;
+    arguments.arg9=discountPercentage;
+    arguments.arg10=discountPeriod;
+    arguments.arg11=sanctionAuthority;
+   // arguments.arg11=sanctionDate;
+    arguments.arg12=repaymentAccountNo;
+
+    options.dataArguments=arguments;
+    
+    $.ajax({ 
+   url: "http://localhost:3000/postSender",
+   datatype: "JSON", 
+   data: options,
+   type: "Post", 
+   success: function (data) { 
+              //debugger;                           
+              console.log("data "+data );
+              //console.log("data.length "+data.length )
+              console.log("data.length "+ data.length);
+              let len=data.length;
+              $("#messages").text(data);
+                } 
+              }); 
+          }
+          setTimeout(function(){
+  $('#messages').remove();
+}, 50000);
+  </script>
+  </head>
+<div>
+	<body>
+	<div >
+    <img src="/Images/headleft.png">
+    <div class="top-right" style="float: right; margin-top: -117px;margin-right: 45px;overflow: hidden">
+      <ol style="overflow: hidden"><li style="padding: 10px"><img style="position: absolute;width:134px" onclick="addBankParticipant()"src="/Images/BAdd.png"/></li>
+        <li style="padding: 10px"><img style="position: absolute;width:134px;margin-top: -4px" src="/Images/bankConfig.png"/></li>
+          <li style="padding: 10px"><img style="position: absolute;width:134px;margin-top: -9px"onclick="bankWalletsPage()" src="/Images/bankWallet.png"/></li></ol></div>
+  </div>
+   <div class="nav">
+    <img src="/Images/addprogramhead.png">
+    <div class="top-right" style="float: right; margin-top: 117px;margin-right: 45px;overflow: hidden">
+     <li style="padding: 10px"><img style="position: absolute;width:134px;margin-top: -128px;margin-left: -260px" onclick="mainPage()" src="/Images/back.png"/></li></div>
+     
+    </div>
+    <div class="nav1" id="text">
+
+    	</br>
+    <div class="row">
+        <div class="col-md-4">Program ID</div><div class="col-md-8"><input type="text" id="programId"></div>
+    </div>
+           <div class="row">
+        <div class="col-md-4">Program Name</div><div class="col-md-8"><input type="text" id="programName"></div>
+    </div>
+    </br>
+        <div class="row">
+        <div class="col-md-4">Program Anchor ID </div><div class="col-md-8"><input type="text" id="programAnchor"></div>
+    </div>
+    </br>
+        <div class="row">
+        <div class="col-md-4">Program Type</div><div class="col-md-8"><input type="text" id="programType"></div>
+    </div>
+    </br>
+        <div class="row">
+        <div class="col-md-4">Program Start_Date</div><div class="col-md-8"><input type="date" id="program_StartDate"></div>
+    </div>
+    </br>
+        <div class="row">
+        <div class="col-md-4">Program End_Date</div><div class="col-md-8"><input type="text" id="program_EndDate"></div>
+    </div>  
+    </br>  
+        <div class="row">
+        <div class="col-md-4">Program Limit</div><div class="col-md-8"><input type="text" id="programLimit"></div>
+    </div>
+    </br>
+    <div class="row">
+        <div class="col-md-4">Program ROI</div><div class="col-md-8"><input type="text" id="programROI"></div>
+    </div>
+     </br>
+    <div class="row">
+        <div class="col-md-4">Program Exposure</div><div class="col-md-8"><input type="text" id="programExposure"></div>
+    </div>
+     </br>
+    <div class="row">
+        <div class="col-md-4">Discount Percentage</div><div class="col-md-8"><input type="text" id="discountPercentage"></div>
+    </div>
+     </br>
+    <div class="row">
+        <div class="col-md-4">Discount Period</div><div class="col-md-8"><input type="text" id="discountPeriod"></div>
+    </div>
+       </br>
+    <div class="row">
+        <div class="col-md-4">Sanction Authority</div><div class="col-md-8"><input type="text" id="sanctionAuthority"></div>
+    </div>
+       </br>
+    <div class="row">
+        <div class="col-md-4">Sanction Date</div><div class="col-md-8"><input type="date" id="sanctionDate"></div>
+    </div>
+       </br>
+    <div class="row">
+        <div class="col-md-4">Repayment Account No</div><div class="col-md-8"><input type="text" id="repaymentAccountNo"></div>
+    </div>
+     </br>
+ 
+    <div class="center" style="margin-left: 330px">
+     <img src="/Images/Cancel.png" onclick="cancel()">
+      <img src="/Images/Submit.png" onclick="addProgram()">
+       <div id="messages"></div>
+    </div>       
+     </div> 
+</body>
+</html>
+<!--<h1>Add Program</h1>
+    <table width=75% id="bussiness">
+		<tr><td>Program Id</td><td><input type="text" id="programId"></td></tr>
+		<tr><td>Program Name</td><td><input type="text" id="programName"></td></tr>
+        <tr><td>Program Anchor</td><td><input type="text" id="programAnchor"></td></tr>
+		<tr><td>Program Type</td><td><input type="text" id="programType"></td></tr>
+        <tr><td>Program Start_Date</td><td><input type="date" id="program_StartDate"></td></tr>
+		<tr><td>Program End_Date</td><td><input type="date" id="program_EndDate"></td></tr>
+		<tr><td>Program Limit</td><td><input type="text" id="programLimit"></td></tr>
+		<tr><td>Program ROI</td><td><input type="text" id="programROI"></td></tr>
+        <tr><td>Program Exposure</td><td><input type="text" id="programExposure"></td></tr>
+		<tr><td>Discount Percentage</td><td><input type="text" id="discountPercentage"></td></tr>
+		<tr><td>Discount Period</td><td><input type="text" id="discountPeriod"></td></tr>
+        <tr><td>Sanction Authority</td><td><input type="text" id="sanctionAuthority"></td></tr>
+		<tr><td>Sanction Date</td><td><input type="date" id="sanctionDate"></td></tr>
+		<tr><td>Repayment Account No</td><td><input type="text" id="repaymentAccountNo"></td></tr>
+    </table>
+</div>
+<div>
+    <button class-"wide" onclick="cancelBusiness()"  id="cancel" >Cancel</button> 
+    <button class-"wide" onclick="addProgram()"  id="submit">Submit</button>
+ <button class-"wide" onclick="mainPage()"  id="back">Back</button>
+<div id="messages"></div> -->
+</div>
+</html>
+

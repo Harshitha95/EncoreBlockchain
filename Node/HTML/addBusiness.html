@@ -1,0 +1,153 @@
+<html>
+<head>
+   <style>
+body {background-color: white;}
+h1 { text-align: center  }
+.nav {
+    
+    list-style-type: none;
+    height:75px;
+    width: 100%;   
+    margin-top: 50px;
+    margin-left: 100px;
+}
+.nav1 {
+    
+    list-style-type: none;
+    height:auto;
+    width: 84%;
+    text-indent: 10px;
+    background-color: #99ddff;
+    margin-top: -16px;
+    margin-left: 100px;
+}
+
+</style>
+<script
+src="https://code.jquery.com/jquery-3.3.1.js"
+integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60="
+crossorigin="anonymous"></script>
+<script>
+  function addBusiness() {
+  
+  let businessId= $("#businessId").val();
+  let businessName= $("#businessName").val();
+  let businessAccNo= $("#businessAccNo").val();
+  let businessLimit= $("#businessLimit").val();
+  let minROI= $("#minROI").val();
+  let maxROI= $("#maxROI").val();
+  let bWB= $("#bWB").val();
+
+  let options = {};
+ options.chaincodeId="businesscc";
+ options.methodToBeCalled="putNewBusinessInfo";
+
+//form array of named inputs 
+
+var arguments={};
+arguments.arg1=businessId;
+arguments.arg2=businessName;
+arguments.arg3=businessAccNo;
+arguments.arg4=businessLimit;
+arguments.arg5=minROI;
+arguments.arg6=maxROI;
+arguments.arg7=bWB;
+arguments.arg8="1000";
+arguments.arg9="1000";
+arguments.arg10="1000";
+arguments.arg11="1000";
+
+options.dataArguments=arguments;
+  
+$.ajax({ 
+   url: "http://localhost:3000/postSender",
+   datatype: "JSON", 
+   data: options,
+   type: "Post", 
+   success: function (data) { 
+              //debugger;                           
+              console.log("data "+data );
+              //console.log("data.length "+data.length )
+              console.log("data.length "+ data.length);
+              let len=data.length;
+              $("#messages").text(data);
+                } 
+              }); 
+          }
+          setTimeout(function(){
+  $('#messages').remove();
+}, 50000);
+  </script>
+</head>
+<body>
+  <div >
+    <img src="/Images/headleft.png">
+    <div class="top-right" style="float: right; margin-top: -117px;margin-right: 45px;overflow: hidden">
+      <ol style="overflow: hidden"><li style="padding: 10px"><img style="position: absolute;width:134px" onclick="addBankParticipant()"src="/Images/BAdd.png"/></li>
+        <li style="padding: 10px"><img style="position: absolute;width:134px;margin-top: -4px" src="/Images/bankConfig.png"/></li>
+          <li style="padding: 10px"><img style="position: absolute;width:134px;margin-top: -9px"onclick="bankWalletsPage()" src="/Images/bankWallet.png"/></li></ol></div>
+  </div>
+  <div></div>
+  <div class="nav">
+    <img src="/Images/addbusinesshead.png">
+    <div class="top-right" style="float: right; margin-top: 117px;margin-right: 45px;overflow: hidden">
+     <li style="padding: 10px"><img style="position: absolute;width:134px;margin-top: -128px;margin-left: -260px" onclick="mainPage()" src="/Images/back.png"/></li></div>
+    </div>   
+    <div class="nav1" id="text">
+   </br>
+    <div class="row">
+        <div class="col-md-4">Business ID</div><div class="col-md-8"><input type="text" id="businessId"></div>
+    </div>
+           <div class="row">
+        <div class="col-md-4">Business Name</div><div class="col-md-8"><input type="text" id="businessName"></div>
+    </div>
+    </br>
+        <div class="row">
+        <div class="col-md-4">Business Account No</div><div class="col-md-8"><input type="text" id="businessAccNo"></div>
+    </div>
+    </br>
+        <div class="row">
+        <div class="col-md-4">Business Limit</div><div class="col-md-8"><input type="text" id="businessLimit"></div>
+    </div>
+    </br>
+        <div class="row">
+        <div class="col-md-4">Minimum ROI</div><div class="col-md-8"><input type="text" id="minROI"></div>
+    </div>
+    </br>
+        <div class="row">
+        <div class="col-md-4">Maximum ROI</div><div class="col-md-8"><input type="text" id="maxROI"></div>
+    </div>  
+    </br>  
+        <div class="row">
+        <div class="col-md-4">Business Wallet Balance</div><div class="col-md-8"><input type="text" id="bWB"></div>
+    </div>
+    </br>
+    <div class="center" style="margin-left: 330px">
+     <img src="/Images/Cancel.png" onclick="cancel()" >
+      <img src="/Images/Submit.png" onclick="addBusiness()" >
+       <div id="messages"></div>
+    </div>  
+</div> 
+</body>
+</html>
+
+<!--<div>
+<h1 >Add Business Participant</h1>
+    <table width=75% id="bussiness">
+		<tr><td>Business ID</td><td><input type="text" id="businessId"></td></tr>
+		<tr><td>Business Name</td><td><input type="text" id="businessName"></td></tr>
+    <tr><td>Business Acc No</td><td><input type="text" id="businessAccNo"></td></tr>
+		<tr><td>Business Limit</td><td><input type="text" id="businessLimit"></td></tr>
+    <tr><td>Maximum ROI</td><td><input type="text" id="maxROI"></td></tr>
+		<tr><td>Minimum ROI</td><td><input type="text" id="minROI"></td></tr>
+		<tr><td>Business Wallet Balance</td><td><input type="text" id="bWB"></td></tr>
+    </table>
+</div>
+<div>
+    <button class-"wide" onclick="cancelBusiness()"  id="cancel" >Cancel</button> 
+    <button class-"wide" onclick="addBusiness();validate()"  id="submit">Submit</button>
+    <button class-"wide" onclick="mainPage()"  id="back">Back</button>
+<div id="messages"></div>
+</div>-->
+
+

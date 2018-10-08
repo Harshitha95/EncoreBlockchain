@@ -1,0 +1,139 @@
+
+<html>
+<head>
+    <link rel="stylesheet" href=style.css>
+<script>
+    function addInstrument() {
+    let instrumentRefNo= $("#instrumentRefNo").val();
+  let instrumentDate= $("#instrumentDate").val();
+  let sellBusinessId= $("#sellBusinessId").val();
+  let buyBusinessId= $("#buyBusinessId").val();
+  let insAmmount= $("#insAmmount").val();
+  let insDueDate= $("#insDueDate").val();
+  let programId= $("#programId").val();
+  let pprId= $("#pprId").val();
+  let uploadBatchNo= $("#uploadBatchNo").val();
+  let instrumentEndDate= $("#instrumentEndDate").val();
+  
+  let options = {};
+    options.chaincodeId="instrumentcc";
+    options.methodToBeCalled="enterInstrument";
+    //form array of named inputs 
+    var arguments={};
+    arguments.arg1=instrumentRefNo;
+    arguments.arg2=instrumentDate;
+    arguments.arg3=sellBusinessId;
+    arguments.arg4=buyBusinessId;
+    arguments.arg5=insAmmount;
+    arguments.arg6=insDueDate;
+    arguments.arg7=programId;
+    arguments.arg8=pprId;
+    arguments.arg9=uploadBatchNo;
+    arguments.arg10=instrumentEndDate;
+    options.dataArguments=arguments;
+ 
+$.ajax({ 
+   url: "http://localhost:3000/postSender",
+   datatype: "JSON", 
+   data: options,
+   type: "Post", 
+   success: function (data) { 
+              //debugger;                           
+              console.log("data "+data );
+              //console.log("data.length "+data.length )
+              console.log("data.length "+ data.length);
+              let len=data.length;
+              $("#messages").text(data);
+                } 
+              }); 
+          }
+    </script> 
+</head>
+<body>
+  <div >
+    <img src="/Images/headleft.png">
+    <div class="top-right" style="float: right; margin-top: -117px;margin-right: 45px;overflow: hidden">
+      <ol style="overflow: hidden"><li style="padding: 10px"><img style="position: absolute;width:134px" onclick="addBankParticipant()"src="/Images/BAdd.png"/></li>
+        <li style="padding: 10px"><img style="position: absolute;width:134px;margin-top: -4px" src="/Images/bankConfig.png"/></li>
+          <li style="padding: 10px"><img style="position: absolute;width:134px;margin-top: -9px"onclick="bankWalletsPage()" src="/Images/bankWallet.png"/></li></ol></div>
+  </div>
+  <div></div>
+  <div class="nav">
+    <img src="/Images/addinstrumenthead.png">
+    <div class="top-right" style="float: right; margin-top: 117px;margin-right: 45px;overflow: hidden">
+     <li style="padding: 10px"><img style="position: absolute;width:134px;margin-top: -128px;margin-left: -260px" onclick="mainPage()" src="/Images/back.png"/></li></div>
+   </div>
+   <div class="nav1" id="text">
+   </br>
+    <div class="row">
+        <div class="col-md-4">Instrument Reference No</div><div class="col-md-8"><input type="text" id="instrumentRefNo"></div>
+    </div>
+    <div class="row">
+        <div class="col-md-4">Instrument Date</div><div class="col-md-8" style="width:170px"><input type="text" id="instrumentDate"></div>
+    </div>
+	</br>
+      <div class="row">
+        <div class="col-md-4">Seller Business ID</div><div class="col-md-8"><input type="text" id="sellBusinessId"></div>
+    </div>
+    </br>
+      <div class="row">
+        <div class="col-md-4">Buyer Business ID</div><div class="col-md-8"><input type="text" id="buyBusinessId"></div>
+    </div>
+    </br>
+      <div class="row">
+        <div class="col-md-4">Instrument Amount</div><div class="col-md-8"><input type="text" id="insAmmount"></div>
+    </div>
+    </br>
+    <div class="row">
+        <div class="col-md-4">Instrument Due Date</div><div class="col-md-8" style="width:170px"><input type="text" id="insDueDate"></div>
+    </div>
+    </br>
+      <div class="row">
+        <div class="col-md-4">Program ID</div><div class="col-md-8"><input type="text" id="programId"></div>
+    </div>
+    </br>
+    <div class="col-md-4">PPR ID</div><div class="col-md-8"><input type="text" id="pprId"></div>
+      </br>
+      <div class="row">
+        <div class="col-md-4">Upload BatchNo</div><div class="col-md-8"><input type="text" id="uploadBatchNo"></div>
+    </div>
+    </br>
+    <div class="row">
+        <div class="col-md-4">End Date</div><div class="col-md-8"><input type="text" id="instrumentEndDate"></div>
+    </div>
+    <div class="center" style="margin-left: 330px">
+     <img src="/Images/Cancel.png" onclick="cancel()">
+      <img src="/Images/Submit.png" onclick="addInstrument()">
+       <div id="messages"></div>
+    </div>       
+     </div> 
+</body>
+</html>
+<!-- <style>
+body {background-color: #99a1af;}
+h1 { text-align: center  }
+</style>
+<div>
+<h1>Add Instrument</h1>
+    <table width=75% id="instrument">
+		<tr><td>Instrument Reference No</td><td><input type="text" id="instrumentRefNo"></td></tr>
+        <tr><td>Instrument Date</td><td><input type="date" id="instrumentDate"></td></tr>
+		<tr><td>Seller Business ID</td><td><input type="text" id="sellBusinessId"></td></tr>
+        <tr><td>Buyer Business ID</td><td><input type="text" id="buyBusinessId"></td></tr>
+		<tr><td>Instrument Amount</td><td><input type="text" id="insAmmount"></td></tr>
+		  <tr><td>Instrument Due Date</td><td><input type="date" id="insDueDate"></td></tr>
+		  <tr><td>Program ID</td><td><input type="text" id="programId"></td></tr>
+		  <td class = "select">PPR ID
+        <select id="pprId">        
+                <option value=""></option>
+        </select>
+        </td>
+	     <tr><td>Upload BatchNo</td><td><input type="text" id="uploadBatchNo"></td></tr>
+    </table>
+</div>
+<div>
+    <button class-"wide" onclick="cancelBusiness()"  id="cancel" >Cancel</button> 
+    <button class-"wide" onclick="addInstrument()"  id="submit">Submit</button>
+   <button class-"wide" onclick="mainPage()"  id="back">Back</button>
+<div id="messages"></div>
+</div>-->

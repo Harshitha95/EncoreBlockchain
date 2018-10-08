@@ -1,0 +1,47 @@
+ <html>
+ <head>
+ 	<script src="jquery-3.1.0.min.js"></script> 
+	<script src="jquery-3.1.0.js"></script>
+	<script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+	<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+	<!--<script src='tc-admin.js'></script> -->
+	<script type="text/javascript">
+			function gosample123() {
+			alert("Inide Go 234234234 ");
+			console.log("Inside Go method");
+			let info =["loancc", "newLoanInfo", "1loan", "1ins", "1bus", "1prg", "900", "pragadeesh", "5", "23/10/2018", "25/09/2018:20:45:01", "sanctioned", "0", "0", "0", "1bus", "2bus"];
+			$.ajax({  
+			url: "http://35.237.167.245:3000/invoke",
+			datatype: "JSON", 
+			type: "Post",  
+			data:{info:info}
+			
+			});  
+		}
+		//window.onload = goSample();,.ghr
+	</script> 
+
+
+ </head>
+ 
+ <body>
+	<h1>Bank </h1>
+    <table width=75% id="bank">
+		<tr>
+        <td class = "select">Bank ID
+        <select id="bankId">        
+                <option value="">Bank</option>
+        </select>
+        </td>
+      </tr>
+		</table>
+		<button class-"wide" onclick="mainPage()"  id="back">Back</button>
+	 <button class-"wide" onclick="gosample123()"  id="submit">Submit</button>
+	 <div id="messages"></div>
+	  <div id="valuetable"></div>
+	  
+	</body>
+
+	 
+</html>
+

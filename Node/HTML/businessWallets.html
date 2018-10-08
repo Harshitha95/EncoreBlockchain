@@ -1,0 +1,104 @@
+<html>
+ <head>
+ 	<title>Business Wallets</title>
+	<script src="jquery-3.1.0.min.js"></script>
+	<script src="jquery-3.1.0.js"></script>
+	<script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+	<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+	<script src='tc-admin.js'></script>
+	<style>
+
+		body {background-color: white;}
+		h1 { text-align: center  }
+		.nav {
+		    
+		    list-style-type: none;
+		    height:75px;
+		    width: 100%;
+		   
+		    margin-top: 50px;
+		    margin-left: 100px;
+		}
+		.nav1 {
+		    
+		    list-style-type: none;
+		     text-indent: 10px;
+		    height:auto;
+		    width: 84%;
+		    background-color: #8BE6F6;
+		    margin-top: -16px;
+		    margin-left: 100px;
+
+		}
+
+</style>
+	<script>
+		function getBusinessNo() {
+			$.ajax({  
+			url: "http://14.192.17.63:6002/composer/admin/getBusiness",  
+			datatype: "JSON",  
+			type: "Get",  
+			success: function (data) {  
+			//debugger; 
+				console.log("data "+data );
+			//	console.log("data.length "+data.length )
+				console.log("data.length "+ data.length);
+				let len=data.length;
+			for(var i=0;i<len; i++)  
+			{  
+				var opt = new Option(data[i]);  
+				$("#businessNo").append(opt);  
+				console.log("opt "+opt);
+			}  
+			}  
+			});  
+		}
+		window.onload = getBusinessNo();
+	</script> 
+ </head>
+ 
+ <body>
+ 	<div >
+    <img src="/Images/headleft.png">
+    <div class="top-right" style="float: right; margin-top: -117px;margin-right: 45px;overflow: hidden">
+      <ol style="overflow: hidden"><li style="padding: 10px"><img style="position: absolute;width:134px" onclick="addBankParticipant()"src="/Images/BAdd.png"/></li>
+        <li style="padding: 10px"><img style="position: absolute;width:134px;margin-top: -4px" src="/Images/bankConfig.png"/></li>
+          <li style="padding: 10px"><img style="position: absolute;width:134px;margin-top: -9px"onclick="bankWalletPage()" src="/Images/bankWallet.png"/></li></ol></div>
+  </div>
+   <div class="nav">
+    <img src="/Images/businesswallethead.png">
+    <div class="top-right" style="float: right; margin-top: 117px;margin-right: 45px;overflow: hidden">
+     <li style="padding: 10px"><img style="position: absolute;width:134px;margin-top: -128px;margin-left: -260px" onclick="mainPage()" src="/Images/back.png"/></li></div>     
+    </div>
+    <div class="nav1" id="text">
+    	</br>
+    <div class="row">
+        <div class="col-md-4">Business ID </div><div class="col-md-8" ><select id="businessNo" style= "width:190px">        
+                <option value="">Business</option>
+        </select></div>
+    </div>
+    <div class="center" style="margin-left: 330px">
+      <img src="/Images/Cancel.png" onclick="cancel()" >
+      <img src="/Images/Submit.png" onclick="getBusinessDetails()" >
+       <div id="messages"></div>
+    </div>  
+        <div>
+      <div id="valuetable" style="margin-left: 10px"></div>
+  </div>
+	</div>
+	<!--<h1>Business Wallet</h1>
+    <table width=75% id="instrument">
+		<tr>
+        <td class = "select">Business ID
+        <select id="businessNo">        
+                <option value="">Business</option>
+        </select>
+        </td>
+      </tr>
+		</table>
+	</body>
+	 <button class-"wide" onclick="mainPage()"  id="back">Back</button>
+	 <button class-"wide" onclick="getBusinessDetails()"  id="submit">Submit</button>
+	 <div id="messages"></div>
+	  <div id="valuetable"></div> -->
+</html>

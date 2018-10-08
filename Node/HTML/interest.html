@@ -1,0 +1,150 @@
+<!-- <html>
+<head>
+ 	<title>Charges</title>
+	<script src="jquery-3.1.0.min.js"></script>
+	<script src="jquery-3.1.0.js"></script> 
+		 <script src="https://code.jquery.com/jquery-1.12.4.js"></script> 
+	<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+	<script src='tc-admin.js'></script>
+	<script>
+		function getLoan() {
+			$.ajax({  
+			url: "http://14.192.17.63:6002/composer/admin/getSanctionedLoans",  
+			datatype: "JSON",  
+			type: "Get",  
+			success: function (data) {  
+			//debugger; 
+				console.log("data "+data );
+				console.log("data.length "+ data.length);
+				let len=data.length;
+					for(var i=0;i<len; i++)  
+					{  
+						var opt = new Option(data[i]);  
+						$("#loanId").append(opt);  
+						console.log("opt "+opt);
+					}  
+				}  
+			});  
+		}
+		window.onload = getLoan();		
+	</script> 
+<div>
+<h1>Charges</h1>
+    <table width=75% id="instrument">
+    <th></th>
+		<tr>
+			 <td class = "select">Loan ID
+        <select id="loanId">        
+                <option value="">Loan Id</option>
+        </select>
+        </td>
+		</tr>
+		</br>
+		<tr><td>Charges Amount</td><td><input type="text" id="amount"></td></tr>
+    </table>
+</div>
+</br>
+<div>
+    <button class-"wide" onclick="cancelBusiness()"  id="cancel">Cancel</button> 
+    <button class-"wide" onclick="callCharges()"  id="Chargessubmit">Submit</button>
+	 <button class-"wide" onclick="mainPage()"  id="back">Back</button>
+<div id="messages"></div>
+<div id="valuetable"></div>
+</div>
+</html>-->
+
+<html>
+<head>
+<style>
+
+body {background-color: white;}
+h1 { text-align: center  }
+.nav {
+    
+    list-style-type: none;
+    height:75px;
+    width: 100%;   
+    margin-top: 50px;
+    margin-left: 100px;
+}
+.nav1 {
+    
+    list-style-type: none;
+    height:auto;
+    width: 84%;
+    text-indent: 10px;
+    background-color: #ffe5ec;
+    margin-top: -16px;
+    margin-left: 100px;
+}
+
+</style>
+<script src="jquery-3.1.0.min.js"></script>
+	<!--<script src="jquery-3.1.0.js"></script> --> 
+	<script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+	<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script> 
+	<script src='tc-admin.js'></script>
+<script>
+			function getLoan() {
+			$.ajax({  
+			url: "http://14.192.17.63:6002/composer/admin/getCollectedLoans",  
+			datatype: "JSON",  
+			type: "Get",  
+			success: function (data) {  
+			//debugger; 
+				console.log("data "+data );
+			//	console.log("data.length "+data.length )
+				console.log("data.length "+ data.length);
+				let len=data.length;
+					for(var i=0;i<len; i++)  
+					{  
+						var opt = new Option(data[i]);  
+						$("#loanId").append(opt);  
+						console.log("opt "+opt);
+					}  
+				}  
+			});  
+		}
+		window.onload = getLoan();
+	
+	</script> 
+</head>
+<body>
+  <div >
+    <img src="/Images/headleft.png">
+    <div class="top-right" style="float: right; margin-top: -117px;margin-right: 45px;overflow: hidden">
+      <ol style="overflow: hidden"><li style="padding: 10px"><img style="position: absolute;width:134px" onclick="addBankParticipant()"src="/Images/BAdd.png"/></li>
+        <li style="padding: 10px"><img style="position: absolute;width:134px;margin-top: -4px" src="/Images/bankConfig.png"/></li>
+          <li style="padding: 10px"><img style="position: absolute;width:134px;margin-top: -9px"onclick="bankWalletPage()" src="/Images/bankWallet.png"/></li></ol></div>
+  </div>
+  <div></div>
+  <div class="nav">
+    <img src="/Images/interesthead.png">
+    <div class="top-right" style="float: right; margin-top: 117px;margin-right: 45px;overflow: hidden">
+     <li style="padding: 10px"><img style="position: absolute;width:134px;margin-top: -128px;margin-left: -260px" onclick="mainPage()" src="/Images/back.png"/></li></div>     
+    </div>   
+    <div class="nav1" id="text">
+   </br>
+    <div class="row">
+        <div class="col-md-4">Loan ID</div><div class="col-md-8" class="select"> 
+        	<select id="loanId" style="width:168px">       
+            	<option value="">Loan Id</option>
+      		</select>
+      	</div>
+     </div>
+       	
+    <div class="row">
+        <div class="col-md-4">Amount</div>
+        <div class="col-md-8"><input type="text" id="amount"></div>
+    </div>
+     </br>
+    <div class="center" style="margin-left: 330px">
+     <img src="/Images/Cancel.png" onclick="cancel()">
+      <img src="/Images/Submit.png" onclick="callCharges()">
+       <div id="messages"></div>
+    </div>       
+     </div> 
+</body>
+</html>
+
+

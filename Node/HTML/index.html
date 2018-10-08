@@ -1,0 +1,320 @@
+<html>
+<head><title>Themechain</title>
+<style>
+table {
+    font-family: arial, sans-serif;
+    border-collapse: collapse;
+    width: 30%;
+}
+
+td, th {
+    border: 2px solid #dddddd;
+    text-align: left;
+    padding: 8px;
+}
+
+tr:nth-child(even) {
+    background-color: #dddddd;
+}
+body {
+	background-color: white;
+}
+
+h1 { text-align: center  }
+
+hr { 
+	color: black;
+	display: block;
+	border-width: 15px;
+	border-style: inset;
+	margin-bottom: 0.5em;
+	margin-top: 0.5em;
+	margin-right: auto;
+	margin-left: auto;
+	}
+
+.carousel-inner img {
+      width: 100%;
+      height: 100%;
+  }
+  .accordion {
+    background-color: #F7E3AF;
+    color: #444;
+    cursor: pointer;
+    padding: 18px;
+    width: 50%;
+    border: none;
+    text-align: center;
+    outline: none;
+    font-size: 15px;
+    transition: 0.4s;
+}
+
+.active, .accordion:hover {
+    background-color: #c79286; 
+}
+
+.panel {
+    padding: 0 18px;
+     width: 50%;
+    display: none;
+    background-color: #D8D2D0;
+    overflow: hidden;
+
+}
+/**.nav {
+    backgtround-color: #AE2033;
+    list-style-type: none;
+    height:75px;
+    width: 100%;
+
+    border-image: 10px;
+    padding: 0;
+    margin: 0;
+}**/
+.grid-container {
+	display: grid;
+	grid-gap: 10px;
+	padding: 10px;
+
+	grid-template-columns: auto,auto,auto,auto;
+
+}
+ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    width: 60px;
+} 
+
+li a {
+    display: block;
+    background-color: #dddddd;
+}
+button {
+    
+    border: 1px;
+    color: white;
+    padding: 10px 50px;
+    text-align: left;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 2px 1px;
+    cursor: pointer;
+}
+</style>
+<script src=./js/tc-admin.js></script>
+<script src = ./js/jquery-3.1.0.js> </script>
+<script src = ./js/jquery-3.1.0.min.js> </script>
+<script src = ./js/watson-speech.js> </script>
+<!--<script type = "text/javascript" src = "./js/bootstrap.js"> </script> -->
+<meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+  </head>
+<body><div>
+<div  id="body" class="container" style="overflow: hidden"; > 
+ <div class="nav">
+ 		<img src="/Images/headleft.png">
+ 		<div class="top-right" style="float: right; margin-top: -117px;margin-right: 45px;overflow: hidden">
+ 			<ol style="overflow: hidden"><li style="padding: 10px"><img style="position: absolute;width:134px" onclick="addBankParticipant()"src="/Images/BAdd.png"/></li>
+ 				<li style="padding: 10px"><img style="position: absolute;width:134px;margin-top: -4px" src="/Images/bankConfig.png"/></li>
+ 					<li style="padding: 10px"><img style="position: absolute;width:134px;margin-top: -9px" onclick="bankWalletPage()" src="/Images/bankWallet.png"/></li></ol></div>
+ 	</div>
+
+
+<div></div>
+
+
+ <h2 class="text-danger">Set Up</h2>
+ <hr></hr>
+ <div class="row">
+ <div class="nav">
+  <div class="col-md-4">
+       <div class="column">
+    <img src="/Images/businessImage.png">
+    </div>
+    <div class="column" style="margin-top: -111px;margin-right: 170px">
+    <div class="top-center" style="float: right">
+      <ol style="overflow: hidden"><li style="padding: 10px"><img style="position: absolute;width:115px" onclick="addBusinessParticipant()"src="/Images/YWallet.gif"/></li>
+        <li style="padding: 10px"><img style="position: absolute;width:115px;margin-top: -6px;height:34px" src="/Images/Modify.png"/></li>
+          <li style="padding: 10px"><img style="position: absolute;width:115px;margin-top: -11px" onclick="businessWalletsPage()" src="/Images/RWallet.gif"/></li></ol></div>
+     </div>
+    </div>
+  <div class="col-md-4">
+  <div class="column">
+    <img src="/Images/Program.png">
+    </div>
+    <div class="column" style="margin-top: -111px;margin-right: 170px">
+    <div class="top-center" style="float: right">
+      <ol style="overflow: hidden"><li style="padding: 10px"><img style="position: absolute;width:115px" onclick="addProgramAsset()" src="/Images/YWallet.gif"/></li>
+        <li style="padding: 10px"><img style="position: absolute;width:115px;margin-top: -6px;height:34px" src="/Images/Modify.png"/></li>
+          <li style="padding: 10px"><img style="position: absolute;width:115px;margin-top: -11px" src="/Images/RWallet.gif"/></li></ol></div>
+     </div>
+ </div>
+  <div class="col-md-4">
+    <div class="column">
+    <img src="/Images/ProgramParticipant.gif">
+    </div>
+    <div class="column" style="margin-top: -111px;margin-right: 170px">
+    <div class="top-center" style="float: right">
+      <ol style="overflow: hidden"><li style="padding: 10px"><img style="position: absolute;width:115px" onclick="addPPRPage()" src="/Images/YWallet.gif"/></li>
+        <li style="padding: 10px"><img style="position: absolute;width:115px;margin-top: -6px;height:34px" src="/Images/Modify.png"/></li>
+          <li style="padding: 10px"><img style="position: absolute;width:115px;margin-top: -11px" src="/Images/RWallet.gif"/></li></ol></div>
+     </div>
+      </div>
+  </div>
+  </div>
+  <div></div>
+ <h2 class="text-danger">Assets</h2>
+ <hr></hr>
+ <div class="row">
+ <div class="nav">
+  <div class="col-md-6">
+       <div class="column">
+    <img src="/Images/instrument.png">
+    </div>
+    <div class="column" style="margin-top: -111px;margin-right: 365px">
+    <div class="top-center" style="float: right">
+      <ol style="overflow: hidden"><li style="padding: 10px"><img style="position: absolute;width:115px" onclick="addInstrumentPage()" src="/Images/YWallet.gif"/></li>
+        <li style="padding: 10px"><img style="position: absolute;width:115px;margin-top: -6px;height:34px" src="/Images/Status.png"/></li>
+          <li style="padding: 10px"><img style="position: absolute;width:115px;margin-top: -11px" src="/Images/RWallet.gif"/></li></ol></div>
+     </div>
+    </div>
+  <div class="col-md-6">
+  <div class="column">
+    <img src="/Images/loan.png">
+    </div>
+    <div class="column" style="margin-top: -111px;margin-right: 365px">
+    <div class="top-center" style="float: right">
+      <ol style="overflow: hidden"><li style="padding: 10px"><img style="position: absolute;width:115px" onclick="loanSanctionPage()" src="/Images/Sanction.gif"/></li>
+        <li style="padding: 10px"><img style="position: absolute;width:115px;margin-top: -6px;height:34px" onclick="go()" src="/Images/Status.png"/></li>
+          <li style="padding: 10px"><img style="position: absolute;width:115px;margin-top: -11px" onclick="loanWalletsPage()"src="/Images/View.png"/></li></ol></div>
+     </div>
+ </div>
+   </div>
+ </div>
+ <h2 class="text-danger">Transaction</h2>
+ <hr></hr>
+  <h3 class="text-danger">Cash</h3>
+  <div class="grid-container">
+  <div class="row">
+  
+    <div class="col-md-2"><img   onclick="disbursedPage()" src="/Images/Cash_disb.png"/></div>
+     <div class="col-md-2"><img  onclick="collection()" src="/Images/Cash_Coll.png"/></div>
+     <div class="col-md-2"><img  onclick="repaymentPage()" src="/Images/Cash_Repay.png"/></div>
+     <div class="col-md-2"><img  onclick="marginRefundPage()" src="/Images/Cash_Margin.png"/></div>
+      <div class="col-md-2"><img onclick="interestRefundPage()" src="/Images/Cash_Interest Refund.png"/></div>
+    </div>
+     <h3 class="text-danger">Ledger</h3>
+  <div class="row">
+      <div class="col-md-2"><img   onclick="interest()" src="/Images/Ledg_Interest.png"/></div>
+     <div class="col-md-2"><img  onclick="charges()" src="/Images/Ledg_Charges.png"/></div>
+     <div class="col-md-2"><img  onclick="interestAccChargesPage()" src="/Images/Ledg_Accrual Charge.png"/></div>
+     <div class="col-md-2"><img  onclick="penalChargesPage()" src="/Images/Ledg_penalcharge.png"/></div>
+      <div class="col-md-2"><img onclick="tdsPage()" src="/Images/Ledg_Tds.png"/></div>
+    </div>
+    <div class="row">
+      <div class="col-md-2"><img   onclick="accrualChaincode()" src="/Images/Ledg_Accrual.png"/></div>
+     <div class="col-md-2"><img  onclick="interestInAdvColl()" src="/Images/Ledg_Advance Collection.png"/></div>
+     <div class="col-md-2"><img  onclick="penalInterestCollectionPage()" src="/Images/Ledg_Charge Collection.png"/></div>
+   </div>
+    <h3 class="text-danger">EOD</h3>
+    <hr></hr>
+   <div class="row">  
+    <div class="col-md-2"><img  src="/Images/EOD_Daily Settlement.png"/></div>
+      <div class="col-md-2"><img  src="/Images/EOD_Invoice Due.png"/></div>
+     <div class="col-md-2"><img src="/Images/EOD_Interest Accrual.png"/></div>
+     <div class="col-md-2"><img src="/Images/EOD Penal.png"/></div>
+   </div>
+ <!-- <div class="grid-container">
+  <div class="row">
+  
+  	<div class="col-md-2"><button onclick="disbursedPage()" class=" btn-danger"style="text-align: left">Loan Disbursed</button></div>
+    <img style="position: absolute;  onclick="disbursedPage()" src="/Images/Cash_disb.png"/>
+  	<div class="col-md-2"><button onclick="interestInAdvColl()" class=" btn-danger">Interest InAdvance Collection</button></div>
+ 
+  	<div class="col-md-2"><button onclick="repaymentPage()" class=" btn-danger">Repayment</button></div>
+  	<div class="col-md-2"><button onclick="marginRefundPage()" class=" btn-danger">Margin Refund</button></div>
+  	<div class="col-md-2"><button onclick="interestRefundPage()" class=" btn-danger">Interest Refund</button></div>
+  </div>
+  <h3 class="text-danger">Ledger</h3>
+  <div class="row">
+  	<div class="col-md-2"><button onclick="charges()" class=" btn-danger">Charges</button></div>
+  	<div class="col-md-2"><button onclick="accrualChaincode()" class=" btn-danger">Accrual </button></div>
+  	<div class="col-md-2"><button onclick="interestAccChargesPage()" class=" btn-danger">Interest Accrued Charges</button></div>
+  	<div class="col-md-2"><button onclick="penalChargesPage()" class=" btn-danger">Penal Charges</button></div>
+
+ 	<div class="col-md-2">	<button onclick="penalInterestCollectionPage()"  class=" btn-danger">Penal Interest Collectionn</button></div>
+ 	<div class="col-md-2"><button onclick="tdsPage()" class=" btn-danger">TDS</button></div>
+ </div> -- >
+<!--<button class="accordion">Add</button>
+<div class="panel">
+	<button onclick="addBusinessParticipant()">Add Business Participant</button>
+	<button onclick="addBankParticipant()">Add Bank Participant</button>
+	</br>
+	<button onclick="addProgramAsset()" >Add Program</button>
+	<button onclick="addPPRPage()" >Add PPR</button>
+	<button onclick="addInstrumentPage()">Add Instrument</button>
+</div>
+<button class="accordion">Loan</button>
+<div class="panel">
+	<button onclick="loanSanctionPage()">Loan Sanction</button>
+	<button onclick="disbursedPage()">Loan Disbursed</button>
+</div>
+<button class="accordion">Charges</button>
+<div class="panel">
+	<button onclick="charges()">Charges</button>
+	<button onclick="penalChargesPage()">Penal Charges</button>
+	<button onclick="accrualChaincode()">Accrual Chaincode</button>
+	<button onclick="interestAccChargesPage()">Interest Accrued Charges</button>
+</div>
+<button class="accordion">Repayment</button>
+<div class="panel">
+	<button onclick="repaymentPage()">Repayment</button>
+</div>
+<button class="accordion">Refund</button>
+<div class="panel">
+	<button onclick="marginRefundPage()">Margin Refund</button>
+	<button onclick="interestRefundPage()">Interest Refund</button>
+</div>
+<button class="accordion">Collection</button>
+<div class="panel">
+	<button onclick="interestInAdvColl()">Interest InAdvance Collection</button>
+	<button onclick="penalInterestCollectionPage()">Penal Interest Collectionn</button>
+</div>
+<button class="accordion">TDS</button>
+<div class="panel">
+	<button onclick="tdsPage()">TDS</button>
+</div>
+<button class="accordion">View Wallets</button>
+<div class="panel">
+	<button onclick="businessWalletsPage()">Business Wallets</button>
+	<button onclick="loanWalletsPage()">Loan Wallets</button>
+	<button onclick="bankWalletPage()">Bank Wallets</button>
+</div>
+
+<script type="text/javascript">
+  	
+  	var acc = document.getElementsByClassName("accordion");
+		var i;
+
+		for (i = 0; i < acc.length; i++) {
+		    acc[i].addEventListener("click", function() {
+		        this.classList.toggle("active");
+		        var panel = this.nextElementSibling;
+		        if (panel.style.display === "block") {
+		            panel.style.display = "none";
+		        } else {
+		            panel.style.display = "block";
+		        }
+		    });
+		} 	
+
+  </script>-->
+</div>
+</body>
+</html>

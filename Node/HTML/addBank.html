@@ -1,0 +1,138 @@
+<html>
+<head>
+  <style>
+  body {background-color: white;}
+  h1 { text-align: center  }
+  .nav {
+      
+      list-style-type: none;
+      height:75px;
+      width: 100%;
+     
+      margin-top: 50px;
+      margin-left: 100px;
+  }
+  .nav1 {
+      
+      list-style-type: none;
+      height:auto;
+       text-indent: 10px;
+      width: 84%;
+      background-color: #ffe5ec;
+      margin-top: -16px;
+      margin-left: 100px;
+  }
+</style>
+<script
+src="https://code.jquery.com/jquery-3.3.1.js"
+integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60="
+crossorigin="anonymous"></script>
+<script>
+  function addBank() {
+  
+
+
+  let bankId= $("#bankId").val();
+  let bankName= $("#bankName").val();
+  let bankBranch= $("#bankBranch").val();
+  let bankCode= $("#bankCode").val();
+  let bWB= $("#bWB").val();
+  
+  let options = {};
+ options.chaincodeId="bankcc";
+ options.methodToBeCalled="writeBankInfo";
+//form array of named inputs 
+var arguments={};
+arguments.arg1=bankId;
+arguments.arg2=bankName;
+arguments.arg3=bankBranch;
+arguments.arg4=bankCode;
+arguments.arg5=bWB;
+
+arguments.arg6="1000";
+arguments.arg7="1000";
+arguments.arg8="1000";
+arguments.arg9="1000";
+
+options.dataArguments=arguments;
+ 
+$.ajax({ 
+   //url: "http://35.237.167.245:3000/invoke?arguments=['bankcc', 'writeBankInfo', "+bankId+", "+bankName+", "+bankBranch+", "+bankCode+", "+bWB+", '1000', '1000', '1000', '1000']", 
+   //url: "http://localhost:3000/invoke?arguments=['bankcc', 'writeBankInfo', "+bankId+", "+bankName+", "+bankBranch+", "+bankCode+", "+bWB+", '1000', '1000', '1000', '1000']", 
+   // url: "http://localhost:3000/invoke?arguments=%5B%22bankcc%22,%22writeBankInfo%22,%22+bankId+%22,%22+bankName+%22,%22+bankBranch+%22,%22+bankCode+%22,%22+bWB+%22,%221000%22,%221000%22,%221000%22,%221000%22%5D",
+   //url: "http://localhost:3000/invoke?arguments=%5B%22bankcc%22,%22writeBankInfo%22,%2252012%22,%225214%22,%22Chennai%22,%220052%22,%2250000%22,%221000%22,%221000%22,%221000%22,%221000%22%5D",
+   url: "http://localhost:3000/postSender",
+   datatype: "JSON", 
+   data: options,
+   type: "Post", 
+   success: function (data) { 
+              //debugger;                           
+              console.log("data "+data );
+              //console.log("data.length "+data.length )
+              console.log("data.length "+ data.length);
+              let len=data.length;
+              $("#messages").text(data);
+                } 
+              }); 
+          }
+  </script>
+  </head>
+  <body>
+    <div>
+    <img src="/Images/headleft.png">
+    <div class="top-right" style="float: right; margin-top: -117px;margin-right: 45px;overflow: hidden">
+      <ol style="overflow: hidden"><li style="padding: 10px"><img style="position: absolute;width:134px" onclick="addBankParticipant()"src="/Images/BAdd.png"/></li>
+        <li style="padding: 10px"><img style="position: absolute;width:134px;margin-top:-4px" src="/Images/bankConfig.png"/></li>
+          <li style="padding: 10px"><img style="position: absolute;width:134px;margin-top: -9px"onclick="bankWalletsPage()" src="/Images/bankWallet.png"/></li></ol></div>
+  </div>
+  <div></div>
+  <div class="nav">
+    <img src="/Images/addbankhead.png">
+    <div class="top-right" style="float: right; margin-top: 117px;margin-right: 45px;overflow: hidden">
+     <li style="padding: 10px"><img style="position: absolute;width:134px;margin-top: -128px;margin-left: -260px" onclick="mainPage()" src="/Images/back.png"/></li></div>
+     </div>
+     <div class="nav1" id="text">
+   
+</br>
+    <div class="row">
+        <div class="col-md-4">Bank ID</div><div class="col-md-8"><input type="text" id="bankId"></div>
+    </div>
+           <div class="row">
+        <div class="col-md-4">Bank Name</div><div class="col-md-8"><input type="text" id="bankName"></div>
+    </div>
+    </br>
+        <div class="row">
+        <div class="col-md-4">Bank Branch</div><div class="col-md-8"><input type="text" id="bankBranch"></div>
+    </div>
+    </br>
+        <div class="row">
+        <div class="col-md-4">Bank Code</div><div class="col-md-8"><input type="text" id="bankCode"></div>
+    </div>
+    </br>
+        <div class="row">
+        <div class="col-md-4">Bank Wallet Balance</div><div class="col-md-8"><input type="text" id="bWB"></div>
+    </div>
+    </br>        
+    <div class="center" style="margin-left: 330px">
+     <img src="/Images/Cancel.png" onclick="cancel()" >
+      <img src="/Images/Submit.png" onclick="addBank()">
+            <div id="messages"></div>
+    </div>  
+     </div> 
+<!--<div>
+<h1>Add Bank Participant</h1>
+    <table width=75% id="bank">
+		<tr><td>Bank ID</td><td><input type="text" id="bankId"></td></tr>
+		<tr><td>Bank Name</td><td><input type="text" id="bankName"></td></tr>
+      <tr><td>Bank Branch</td><td><input type="text" id="bankBranch"></td></tr>
+		<tr><td>Bank Code</td><td><input type="text" id="bankCode"></td></tr>
+		<tr><td>Bank Wallet Balance</td><td><input type="text" id="bWB"></td></tr>
+    </table>
+</div>
+<div>
+    <button class-"wide" onclick="cancelBank()"  id="cancel">Cancel</button> 
+    <button class-"wide" onclick="addBank()"  id="submit">Submit</button>
+     <button class-"wide" onclick="mainPage()"  id="back">Back</button>
+<div id="messages"></div>
+</div> -->
+</html>
